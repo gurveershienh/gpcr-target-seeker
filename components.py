@@ -9,7 +9,7 @@ from io import StringIO
 def about():
     
     st.markdown('''
-                ### Welcome to the GPCR Target Seeker!
+                ### Learn more about GPCRs (PDB ID: 7WIH)
                 ''')
     with st.container():
         ctk.render_prot('7WIH','cartoon',True, height=300)

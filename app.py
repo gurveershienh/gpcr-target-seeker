@@ -11,10 +11,11 @@ def app():
 
     tab1, tab2, tab3, tab4 = st.tabs(["Background","GPCR Target Seeker", "Model Info", 'Contact'])
 
+
     with tab1:
-        components.about()
-    with tab2:
         components.ligand_qsar()
+    with tab2:
+        components.about()
     with tab3:
         components.model_info()
     with tab4:
