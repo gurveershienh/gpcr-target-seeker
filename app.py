@@ -9,7 +9,7 @@ def app():
                 ''')
     st.write('*Use machine learning to predict the GPCR targets of your compounds*')
 
-    tab1, tab2, tab3, tab4 = st.tabs(["Background","GPCR Target Seeker", "Model Info", 'Contact'])
+    tab1, tab2, tab3, tab4 = st.tabs(["GPCR Target Seeker","Background", "Model Info", 'Contact'])
 
 
     with tab1:
