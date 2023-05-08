@@ -1,24 +1,11 @@
 import pickle
 import numpy as np
 import pandas as pd
-import custom_funcs as ctk
-import statistics as sts
-import matplotlib.pyplot as plt
-from collections import Counter
-from chembl_webresource_client.new_client import new_client
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.model_selection import train_test_split, StratifiedKFold
-from sklearn.preprocessing import StandardScaler
-from sklearn.metrics import accuracy_score, f1_score, matthews_corrcoef
 from sklearn.svm import SVC
 from sklearn.neural_network import MLPClassifier
-from imblearn.metrics import geometric_mean_score
-from skopt import BayesSearchCV
 from rdkit import Chem
 from rdkit.Chem import AllChem
-from skopt.space import Integer, Categorical
-from imblearn.under_sampling import NearMiss
-from sklearn.manifold import TSNE
 
 ensemble = {
     'rf': RandomForestClassifier,
