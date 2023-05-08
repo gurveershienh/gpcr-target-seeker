@@ -1,0 +1,7 @@
+pandas
+numpy
+rdkit
+py3Dmol
+pickleshare
+scikit-learn
+stmol
