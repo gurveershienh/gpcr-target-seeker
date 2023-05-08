@@ -3,6 +3,10 @@ import streamlit as st
 import components
 
 def app():
+
+    st.set_page_config(
+        page_title="GPCR-TargetSeeker"
+    )
     
     st.markdown('''
                 # :dart: GPCR TARGET SEEKER
