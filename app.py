@@ -2,6 +2,8 @@ import numpy as np
 import streamlit as st
 import components
 
+
+
 def app():
 
     st.set_page_config(
@@ -14,7 +16,6 @@ def app():
     st.write('*Use machine learning to predict the GPCR targets of your compounds*')
 
     tab1, tab2, tab3, tab4 = st.tabs(["GPCR Target Seeker","Background", "Model Info", 'Contact'])
-
 
     with tab1:
         components.ligand_qsar()

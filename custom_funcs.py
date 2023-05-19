@@ -58,14 +58,7 @@ def valid_smiles(smi):
         return False
 
 
-@st.cache
-def predict_gpcr(smi):
-    with open('gpcr_classifier.pkl', 'rb') as f:
-        model = pickle.load(f)
-        mol = Chem.MolFromSmiles(smi)
-        ecfp6 = [[int(x) for x in AllChem.GetMorganFingerprintAsBitVect(mol, 3, nBits=2048)]]
-        prediction=model.predict(ecfp6)
-        return prediction
+
         
         
 

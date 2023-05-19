@@ -1,17 +1,11 @@
 import pickle
+import streamlit as st
 import numpy as np
 import pandas as pd
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.svm import SVC
-from sklearn.neural_network import MLPClassifier
 from rdkit import Chem
 from rdkit.Chem import AllChem
 
-ensemble = {
-    'rf': RandomForestClassifier,
-    'svm': SVC,
-    'mlp': MLPClassifier
-}
+
 params = {
     'rf': {
         'n_estimators': 1000,
@@ -64,51 +58,20 @@ gpcr_encoded = {
 }
 
 
-    
+@st.cache
+def load_model():
+    return pickle.load(open(f'models/svm.pkl', 'rb'))
 
-def deploy_model(key,smiles):
+def deploy_model(smiles):
     data = []
-    with open(f'models/{key}.pkl', 'rb') as f:
-        for smi in smiles:
-            mol = Chem.MolFromSmiles(smi)
-            ecfp6 = [int(x) for x in AllChem.GetMorganFingerprintAsBitVect(mol, 3, nBits=2048)]
-            data += [ecfp6]
-        model = pickle.load(f)
-        res = model.predict(data)
+    for smi in smiles:
+        mol = Chem.MolFromSmiles(smi)
+        ecfp6 = [int(x) for x in AllChem.GetMorganFingerprintAsBitVect(mol, 3, nBits=2048)]
+        data += [ecfp6]
+    model = load_model()
+    res = model.predict(data)
     return list(res)
         
-def deploy_ensemble(smiles):
-    predictions = {}
-    for key in ensemble:
-        pred = deploy_model(key, smiles)
-        predictions[key] = pred
-    if len(predictions[key]) > 1:
-        return predictions
-    else:
-        gpcrs = {}
-        for key in predictions:
-            code = predictions[key][0]
-            gpcrs[key] = gpcr_encoded[code]
-        return gpcrs
-
-def prediction_confidences(smiles, predictions):
-    confidences = []
-    rf_preds = predictions['rf']
-    svm_preds = predictions['svm']
-    mlp_preds = predictions['mlp']
-    for x, y, z in zip(rf_preds,svm_preds,mlp_preds):
-        if x == y and y == z:
-            confidence = 'High'
-        elif x != y and y != z and z != x:
-            confidence = 'None'
-        else:
-            confidence = 'Low'
-        confidences.append(confidence)
-    predictions['confidence'] = confidences
-    predictions['smiles'] = smiles
-    res = pd.DataFrame(predictions)
-    res = res.iloc[:, ::-1]
-    return res
         
     
 
