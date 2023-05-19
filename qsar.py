@@ -7,20 +7,10 @@ from rdkit.Chem import AllChem
 
 
 params = {
-    'rf': {
-        'n_estimators': 1000,
-        'min_samples_leaf': 3,
-        'criterion': 'entropy'
-    },
-    'svm': {
-            'kernel':'rbf', 
-            'C': 100,
-    },
-    'mlp': {
-            'alpha': 0.1,
-            'hidden_layer_sizes': 1000,
-            'max_iter': 1000
-    }
+
+        'alpha': 0.1,
+        'hidden_layer_sizes': 1000,
+        'max_iter': 1000
 }
 
 gpcr_encoded = {
@@ -60,7 +50,7 @@ gpcr_encoded = {
 
 @st.cache
 def load_model():
-    return pickle.load(open(f'models/svm.pkl', 'rb'))
+    return pickle.load(open(f'models/mlp.pkl', 'rb'))
 
 def deploy_model(smiles):
     data = []

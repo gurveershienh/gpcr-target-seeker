@@ -17,7 +17,7 @@ def about():
 G protein-coupled receptors (GPCRs) are an essential class of transmembrane proteins that play a crucial role in the regulation of a wide range of physiological processes. As a result, GPCRs have become a vital target for drug discovery, and many pharmaceuticals on the market today target GPCRs. However, identifying the specific GPCR target for a given compound can be a complex and challenging process, as a drug can have many interactions within the body.
 
 
-GPCR Target Seeker is a tool that can streamline the early stages of drug discovery against GPCRs, providing researchers with a robust machine learning model that is trained to predict the primary GPCR target of any given compound. Using a multi-class support vector machine model that was built based on methods outlined in a peer-reviewed study published in esteemed scientific journal *Nature*, this tool enables any researcher to easily screen chemical libraries and make informed decisions about which compounds to pursue for GPCR drug development. The GPCR Target Seeker tool is a valuable resource for drug discovery researchers, providing a streamlined screening method for predicting potential GPCR targets and ultimately accelerating the drug discovery process.
+GPCR Target Seeker is a tool that can streamline the early stages of drug discovery against GPCRs, providing researchers with a robust neural network that is trained to predict the primary GPCR target of any given compound. Using a multi-class classification multilayer perceptron model that was built based on methods outlined in a peer-reviewed study published in esteemed scientific journal *Nature*, this tool enables any researcher to easily screen chemical libraries and make informed decisions about which compounds to pursue for GPCR drug development. The GPCR Target Seeker tool is a valuable resource for drug discovery researchers, providing a streamlined screening method for predicting potential GPCR targets and ultimately accelerating the drug discovery process.
                 ''')
 
 def ligand_qsar():
@@ -81,14 +81,13 @@ def model_info():
                     ---
                     ''')
         with st.container():
-            st.markdown('**Support Vector Machine**')
             acc, f1, mcc = st.columns(3)
             with acc:
-                st.metric('Accuracy', value ='97.1%')
+                st.metric('Accuracy', value ='95.7%')
             with f1:
-                st.metric('F1-score', value ='97.1%')
+                st.metric('F1-score', value ='95.7%')
             with mcc:
-                st.metric('Matthews Correlation Coef.', value ='97.0%')
+                st.metric('Matthews Correlation Coef.', value ='95.5%')
 
         st.markdown('''
                     Model was evaluated using stratified 5-fold cross-validation
@@ -138,7 +137,7 @@ def model_info():
     
 def contact():
     st.markdown('''
-                This application and the machine learning support vector machine model that powers it was solely developed by Gurveer Singh Shienh. 
+                This application and the neural network that powers it was solely developed by Gurveer Singh Shienh. 
                 \nHe can be contacted at gsshienh@uwaterloo.ca or through LinkedIn at https://www.linkedin.com/in/gurveer-shienh/.
                 ''')
     st.write('Source code for this application can be found at https://www.github.com/gurveershienh/gpcr-target-seeker')
