@@ -17,7 +17,7 @@ def about():
 G protein-coupled receptors (GPCRs) are an essential class of transmembrane proteins that play a crucial role in the regulation of a wide range of physiological processes. As a result, GPCRs have become a vital target for drug discovery, and many pharmaceuticals on the market today target GPCRs. However, identifying the specific GPCR target for a given compound can be a complex and challenging process, as a drug can have many interactions within the body.
 
 
-GPCR Target Seeker is a tool that can streamline the early stages of drug discovery against GPCRs, providing researchers with a robust neural network that is trained to predict the primary GPCR target of any given compound. Using a multi-class classification multilayer perceptron model that was built based on methods outlined in a peer-reviewed study published in esteemed scientific journal *Nature*, this tool enables any researcher to easily screen chemical libraries and make informed decisions about which compounds to pursue for GPCR drug development. The GPCR Target Seeker tool is a valuable resource for drug discovery researchers, providing a streamlined screening method for predicting potential GPCR targets and ultimately accelerating the drug discovery process.
+GPCR Target Seeker is a tool that can streamline the early stages of drug discovery against GPCRs, providing researchers with a robust neural network that is trained to predict the primary GPCR target of any given compound. Using a multi-class multilayer perceptron model that was built based on methods outlined in a peer-reviewed study published in esteemed scientific journal *Nature*, this tool enables any researcher to easily screen chemical libraries and make informed decisions about which compounds to pursue for GPCR drug development. The GPCR Target Seeker tool is a valuable resource for drug discovery researchers, providing a streamlined screening method for predicting potential GPCR targets and ultimately accelerating the drug discovery process.
                 ''')
 
 def ligand_qsar():
@@ -90,7 +90,7 @@ def model_info():
                 st.metric('Matthews Correlation Coef.', value ='95.5%')
 
         st.markdown('''
-                    Model was evaluated using stratified 5-fold cross-validation
+                    Neural network was evaluated using stratified 5-fold cross-validation
                     ''')
         with st.container():   
             st.markdown('''
@@ -111,8 +111,8 @@ def model_info():
             produced through tSNE dimensionality reduction method, where each colour represents a different GPCR family. 
             Data cleaning steps were applied to the collected GPCR interaction data to produce a yield of 121,615 
             nonredundant ligands against 87 GPCR families. To reduce the scale of the dataset, the Near Miss under 
-            sampling method was applied to scale the data down to 31,000 against 31 GPCR families. GPCR targets with less than 100 known ligands were removed. Encoded GPCR targets 
-            the models were trained on can be seen below.
+            sampling method was applied to scale the data down to 31,000 against 31 GPCR families. GPCR targets with less than 1000 known ligands were removed. Encoded GPCR targets 
+            the model was trained on can be seen below.
             '''
             st.image('images/tsne1.png', caption=tsne_caption)
         
@@ -140,5 +140,5 @@ def contact():
                 This application and the neural network that powers it was solely developed by Gurveer Singh Shienh. 
                 \nHe can be contacted at gsshienh@uwaterloo.ca or through LinkedIn at https://www.linkedin.com/in/gurveer-shienh/.
                 ''')
-    st.write('Source code for this application can be found at https://www.github.com/gurveershienh/gpcr-target-seeker')
+    st.write('Source code for this application can be found at https://www.github.com/gurveershienh/gpcr-targetseeker')
 
