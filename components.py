@@ -24,7 +24,7 @@ def ligand_qsar():
     st.markdown('##### Enter a compound using SMILES notation')
 
 
-    with st.form(key='qsar-form'):
+    with st.form(key='qsar-form', clear_on_submit=True):
 
         smi = st.text_input('Input SMILES string')
         smi = smi.strip()
@@ -60,7 +60,7 @@ def ligand_qsar():
             pred_df = pd.DataFrame(pred_dict)
             st.write(pred_df)
 
-        with st.expander('Sample GPCR ligands'):
+        with st.expander('Sample SMILES'):
             st.write('Nicotine')
             st.code('CN1CCCC1C2=CN=CC=C2')
             st.write('Fentanyl')
@@ -138,7 +138,7 @@ def model_info():
 def contact():
     st.markdown('''
                 This application and the neural network that powers it was solely developed by Gurveer Singh Shienh. 
-                \nHe can be contacted at gsshienh@uwaterloo.ca or through LinkedIn at https://www.linkedin.com/in/gurveer-shienh/.
+                \nHe can be contacted at ggshienh@gmail.com or through LinkedIn at https://www.linkedin.com/in/gurveer-shienh/.
                 ''')
     st.write('Source code for this application can be found at https://www.github.com/gurveershienh/gpcr-targetseeker')
 
