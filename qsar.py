@@ -48,7 +48,7 @@ gpcr_encoded = {
 }
 
 
-@st.cache
+@st.cache_resource
 def load_model():
     return pickle.load(open(f'models/mlp.pkl', 'rb'))
 

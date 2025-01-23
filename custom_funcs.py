@@ -38,7 +38,7 @@ def render_prot(xyz,style,spin, width=650, height=400):
     view.zoomTo()
     showmol(view, width=width, height=height)
     
-@st.cache
+@st.cache_data
 def computeFP(smiles, labels=None):
     moldata = [Chem.MolFromSmiles(mol) for mol in smiles]
     fpdata=[]
